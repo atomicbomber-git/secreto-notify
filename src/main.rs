@@ -100,10 +100,14 @@ fn fetch_secreto(url: &str, stored_message_path: &str) {
             }
 
             if new_messages.to_vec().len() > 0 {
+                let message_body = new_messages.to_vec().join("\n\n");
+
                 Notification::new()
                     .summary("New Secreto(s)!")
-                    .body(new_messages.to_vec().join("\n").as_str())
-                    .show();
+                    .body(message_body.as_str())
+                    .summary(message_body.as_str())
+                    .show()
+                ;
             }
 
             let mut file_for_writing = OpenOptions::new()
