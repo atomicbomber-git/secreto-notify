@@ -49,7 +49,7 @@ fn fetch_secreto(url: &str, stored_message_path: &str) {
         if let Ok(html_string) = response.text() {
 
             let document = Html::parse_document(&html_string);
-            let message_selector = Selector::parse("div.msg_block").unwrap();
+            let message_selector = Selector::parse(".main-message-box > .tenpxbottom").unwrap();
 
             let mut incoming_messages: Vec<String> = vec![];
 
